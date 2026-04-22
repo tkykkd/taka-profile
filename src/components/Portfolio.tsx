@@ -16,7 +16,9 @@ import {
   Youtube,
   Layout,
   Play,
-  Languages
+  Languages,
+  Check,
+  Copy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,6 +29,8 @@ import { translations, type Language } from "../locales";
 export default function Portfolio() {
   const [lang, setLang] = useState<Language>("ja");
   const t = translations[lang];
+
+  const GOOGLE_FORM_URL = "https://forms.gle/EiY9QgY3VG8BMufT9";
 
   const achievements = [
     {
@@ -262,13 +266,23 @@ export default function Portfolio() {
                   </div>
                   <p className="text-muted-foreground">Thailand (Remote Ready)</p>
                 </div>
-                <div>
+                <a 
+                  href={GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer group/mail"
+                >
                   <div className="flex items-center gap-2 text-primary mb-2">
                     <Mail className="w-4 h-4" />
-                    <h4 className="font-bold text-foreground underline decoration-primary/30 underline-offset-4">{t.about.email}</h4>
+                    <h4 className="font-bold text-foreground underline decoration-primary/30 underline-offset-4 group-hover/mail:text-primary transition-colors">
+                      {t.about.email}
+                    </h4>
                   </div>
-                  <p className="text-muted-foreground">tkykkd@gmail.com</p>
-                </div>
+                  <p className="text-muted-foreground flex items-center gap-2 group-hover/mail:text-primary transition-colors text-sm">
+                    Google Form {t.contact.title}
+                    <ExternalLink className="w-3 h-3 opacity-0 group-hover/mail:opacity-100 transition-opacity" />
+                  </p>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -468,8 +482,15 @@ export default function Portfolio() {
               {t.contact.desc}
             </p>
             <div className="flex justify-center">
-              <Button size="lg" className="rounded-full px-12 h-16 text-xl" asChild>
-                <a href="mailto:tkykkd@gmail.com">{t.contact.btn}</a>
+              <Button 
+                size="lg" 
+                className="rounded-full px-12 h-16 text-xl transition-all duration-300"
+                asChild
+              >
+                <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
+                  {t.contact.btn}
+                  <ExternalLink className="ml-2 w-5 h-5" />
+                </a>
               </Button>
             </div>
           </motion.div>

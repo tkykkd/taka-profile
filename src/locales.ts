@@ -82,7 +82,8 @@ export const translations = {
       title: "Contact",
       subtitle: "ご相談・お問い合わせ",
       desc: "業務改善、運用設計、コンテンツ運用、Web制作、動画制作、AI活用のご相談に対応しています。小規模案件から継続支援まで、お気軽にご連絡ください。",
-      btn: "メールを送る"
+      btn: "メールを送る",
+      copied: "コピーしました"
     },
     footer: { rights: "All rights reserved." }
   },
@@ -167,7 +168,8 @@ export const translations = {
       title: "Contact",
       subtitle: "Get in Touch",
       desc: "Available for consultations on business improvement, operations design, content operations, Web/Video production, and AI implementation. Feel free to contact me for small projects or long-term support.",
-      btn: "Send Email"
+      btn: "Send Email",
+      copied: "Copied Email"
     },
     footer: { rights: "All rights reserved." }
   },
@@ -252,7 +254,8 @@ export const translations = {
       title: "ติดต่อ",
       subtitle: "สอบถามข้อมูล",
       desc: "ยินดีให้คำปรึกษาเกี่ยวกับการปรับปรุงธุรกิจ การออกแบบการดำเนินงาน การดำเนินงานด้านคอนเทนต์ การผลิตเว็บ/วิดีโอ และการนำ AI มาใช้ ติดต่อผมสำหรับโครงการขนาดเล็กหรือการสนับสนุนระยะยาว",
-      btn: "ส่งอีเมล"
+      btn: "ส่งอีเมล",
+      copied: "คัดลอกแล้ว"
     },
     footer: { rights: "สงวนลิขสิทธิ์ทั้งหมด" }
   },
@@ -337,7 +340,8 @@ export const translations = {
       title: "Contact",
       subtitle: "咨询与联系",
       desc: "提供业务改进、运营设计、内容运营、网页制作、视频制作及AI应用方面的咨询。无论是小型项目还是长期支持，欢迎随时联系。",
-      btn: "发送邮件"
+      btn: "发送邮件",
+      copied: "已复制邮件地址"
     },
     footer: { rights: "版权所有。" }
   }
