@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { 
   Mail, 
@@ -14,102 +15,121 @@ import {
   Globe,
   Youtube,
   Layout,
-  Play
+  Play,
+  Languages
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-
-const achievements = [
-  {
-    title: "K社",
-    description: "共同創業者として事業運営全般を担当。1年目売上3.4億円、2年目13億円超の成長を実現。少人数体制での全店セミナー運営と業務最適化を推進しました。",
-    tags: ["事業運営", "売上成長", "業務最適化"],
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800&h=600"
-  },
-  {
-    title: "N社",
-    description: "管理部マネージャーとして製造・会員・物流管理を統括。原料調達の見直しにより仕入単価を約半減。月間3,000万円規模の仕入に対し、年間約1,800万円規模のコスト改善を実現。",
-    tags: ["管理部門", "コスト削減", "サプライチェーン"],
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800&h=600"
-  },
-  {
-    title: "H社",
-    description: "製品管理・総務・経営企画の複数部門を立ち上げ。年商3,000万円から約3年間で4億円弱への拡大に貢献し、中国・青島拠点の在庫/出荷体制整備も担当。",
-    tags: ["部門立ち上げ", "海外拠点管理", "経営企画"],
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&h=600"
-  },
-  {
-    title: "ONIKA STUDIO",
-    subtitle: "クリエイター向け多機能ポートフォリオ",
-    description: "構成設計、文言設計、公開までを短期間で実装。作品を魅力的に見せる導線設計と、更新しやすい運用性を重視して制作。",
-    tags: ["Web制作", "UI/UX設計", "運用性重視"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600",
-    link: { label: "サイトを見る", href: "https://ais-pre-rneytcbdu2kguu5oyuxts5-459773233175.asia-east1.run.app" }
-  },
-  {
-    title: "個人開発アプリ",
-    description: "業務課題の解決を目的に、AI活用アプリを企画・実装。短期間で試作し、実運用を意識したUIと導線を設計。",
-    tags: ["AI活用", "課題解決", "プロダクト企画"],
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800&h=600",
-    subLinks: [
-      { name: "姓名判断鑑定", url: "https://fortune-app-lt2qmmko7xpgf7vjcmawwm.streamlit.app/" },
-      { name: "RAG型AI", url: "https://udify.app/chat/FQUSZtUZmNUj9kfI" }
-    ]
-  },
-  {
-    title: "YouTubeチャンネル運用",
-    description: "立ち上げから撮影、編集、運用まで一気通貫で対応。継続配信と改善を重ね、実務として制作体制を構築。",
-    tags: ["動画制作", "チャンネル運営", "体制構築"],
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&q=80&w=800&h=600",
-    subLinks: [
-      { name: "Yappa Japan（継続中）", url: "https://www.youtube.com/@YappaJapan" },
-      { name: "プルックサージャパン（2021.7〜2025.10運用）", url: "https://www.youtube.com/@%E3%83%97%E3%83%AB%E3%83%83%E3%82%AF%E3%82%B5%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3" },
-      { name: "タイランドエリート（スポット）", url: "https://www.youtube.com/watch?v=-S_4e8_GXP4" }
-    ]
-  },
-  {
-    title: "Project365（継続配信）",
-    description: "記事執筆に加え、音声解説・デザイン制作まで含む配信を運用。AIを活用した企画〜更新フローを実践。",
-    tags: ["note継続配信", "インフォグラフィック", "AIワークフロー"],
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800&h=600",
-    link: { label: "noteリンク", href: "https://note.com/tkykkd/n/nc3fcf9fe771a" },
-    label: "継続運用中"
-  }
-];
-
-const coreStrengths = [
-  { 
-    name: "事業運営・業務改善", 
-    items: ["管理体制構築", "フロー設計と標準化", "コスト最適化"], 
-    icon: <Settings className="w-5 h-5" /> 
-  },
-  { 
-    name: "コンテンツ運用", 
-    items: ["セミナー動画編集・配信", "YouTubeチャンネル運用", "Webページ制作・更新"], 
-    icon: <Tv className="w-5 h-5" /> 
-  },
-  { 
-    name: "組織づくり", 
-    items: ["採用・育成・権限移譲", "関係者調整と実行管理", "継続運用できる体制づくり"], 
-    icon: <Users className="w-5 h-5" /> 
-  }
-];
-
-const certifications = [
-  { 
-    name: "2級ファイナンシャル・プランニング技能士", 
-    image: "/cert-fp.jpg"
-  },
-  { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert-google-ai.jpg" },
-  { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert-google-prompt.jpg" },
-  { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert-vanderbilt.jpg" },
-  { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert-upenn.jpg" },
-  { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert-ibm.jpg" }
-];
+import { translations, type Language } from "../locales";
 
 export default function Portfolio() {
+  const [lang, setLang] = useState<Language>("ja");
+  const t = translations[lang];
+
+  const achievements = [
+    {
+      title: t.achievements.k.title,
+      description: t.achievements.k.desc,
+      tags: t.achievements.k.tags,
+      image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800&h=600"
+    },
+    {
+      title: t.achievements.n.title,
+      description: t.achievements.n.desc,
+      tags: t.achievements.n.tags,
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800&h=600"
+    },
+    {
+      title: t.achievements.h.title,
+      description: t.achievements.h.desc,
+      tags: t.achievements.h.tags,
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&h=600"
+    },
+    {
+      title: t.achievements.studio.title,
+      subtitle: t.achievements.studio.subtitle,
+      description: t.achievements.studio.desc,
+      tags: t.achievements.studio.tags,
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600",
+      link: { label: t.achievements.studio.btn, href: "https://ais-pre-rneytcbdu2kguu5oyuxts5-459773233175.asia-east1.run.app" }
+    },
+    {
+      title: t.achievements.apps.title,
+      description: t.achievements.apps.desc,
+      tags: t.achievements.apps.tags,
+      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800&h=600",
+      subLinks: [
+        { name: t.achievements.apps.links[0], url: "https://fortune-app-lt2qmmko7xpgf7vjcmawwm.streamlit.app/" },
+        { name: t.achievements.apps.links[1], url: "https://udify.app/chat/FQUSZtUZmNUj9kfI" }
+      ]
+    },
+    {
+      title: t.achievements.youtube.title,
+      description: t.achievements.youtube.desc,
+      tags: t.achievements.youtube.tags,
+      image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&q=80&w=800&h=600",
+      subLinks: [
+        { name: t.achievements.youtube.links[0], url: "https://www.youtube.com/@YappaJapan" },
+        { name: t.achievements.youtube.links[1], url: "https://www.youtube.com/@%E3%83%97%E3%83%AB%E3%83%83%E3%82%AF%E3%82%B5%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3" },
+        { name: t.achievements.youtube.links[2], url: "https://www.youtube.com/watch?v=-S_4e8_GXP4" }
+      ]
+    },
+    {
+      title: t.achievements.project365.title,
+      description: t.achievements.project365.desc,
+      tags: t.achievements.project365.tags,
+      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800&h=600",
+      link: { label: t.achievements.project365.btn, href: "https://note.com/tkykkd/n/nc3fcf9fe771a" },
+      label: t.achievements.project365.label
+    }
+  ];
+
+  const coreStrengths = [
+    { 
+      name: t.strengths.biz, 
+      items: t.strengths.bizItems, 
+      icon: <Settings className="w-5 h-5" /> 
+    },
+    { 
+      name: t.strengths.content, 
+      items: t.strengths.contentItems, 
+      icon: <Tv className="w-5 h-5" /> 
+    },
+    { 
+      name: t.strengths.org, 
+      items: t.strengths.orgItems, 
+      icon: <Users className="w-5 h-5" /> 
+    }
+  ];
+
+  const certifications = [
+    { 
+      name: "2級ファイナンシャル・プランニング技能士", 
+      image: "/cert-fp.jpg"
+    },
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert-google-ai.jpg" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert-google-prompt.jpg" },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert-vanderbilt.jpg" },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert-upenn.jpg" },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert-ibm.jpg" }
+  ];
+
+  const navItems = [
+    { label: t.nav.profile, href: "#about" },
+    { label: t.nav.strengths, href: "#strengths" },
+    { label: t.nav.achievements, href: "#achievements" },
+    { label: t.nav.contact, href: "#contact" }
+  ];
+
+  const languages: { code: Language; label: string }[] = [
+    { code: "ja", label: "日本語" },
+    { code: "en", label: "English" },
+    { code: "th", label: "ไทย" },
+    { code: "zh", label: "中文" }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 font-sans">
       {/* Navigation */}
@@ -123,25 +143,44 @@ export default function Portfolio() {
             >
               TAKAYUKI KIDO<span className="text-primary">.</span>
             </motion.div>
-            <div className="hidden md:flex space-x-8 text-sm font-medium">
-              {[
-                { label: "プロフィール", href: "#about" },
-                { label: "強み", href: "#strengths" },
-                { label: "実績", href: "#achievements" },
-                { label: "お問い合わせ", href: "#contact" }
-              ].map((item) => (
+            
+            <div className="hidden lg:flex space-x-6 text-sm font-medium">
+              {navItems.map((item) => (
                 <a 
                   key={item.label} 
                   href={item.href}
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors whitespace-nowrap"
                 >
                   {item.label}
                 </a>
               ))}
             </div>
-            <Button variant="outline" size="sm" className="hidden md:flex rounded-full" asChild>
-              <a href="#contact">お問い合わせ</a>
-            </Button>
+
+            <div className="flex items-center gap-4">
+              {/* Language Switcher */}
+              <div className="flex items-center gap-1 bg-muted/50 p-1 rounded-full border border-primary/10">
+                <div className="px-2 hidden sm:block">
+                  <Languages className="w-3.5 h-3.5 text-muted-foreground" />
+                </div>
+                {languages.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => setLang(l.code)}
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase transition-all ${
+                      lang === l.code 
+                        ? "bg-primary text-primary-foreground shadow-sm" 
+                        : "text-muted-foreground hover:bg-muted/80"
+                    }`}
+                  >
+                    {l.label}
+                  </button>
+                ))}
+              </div>
+              
+              <Button variant="outline" size="sm" className="hidden md:flex rounded-full text-xs" asChild>
+                <a href="#contact">{t.nav.contact}</a>
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
@@ -150,27 +189,30 @@ export default function Portfolio() {
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
+            key={lang} // Trigger animation on language change
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Badge variant="outline" className="mb-6 px-4 py-1 text-xs uppercase tracking-widest border-primary/50 text-primary">
-              Business Operations & Operations Design
+              {t.hero.badge}
             </Badge>
             <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
-              事業を前進させる、<br />
-              <span className="text-muted-foreground">運用設計</span>と<span className="text-primary">実行力</span>。
+              {t.hero.title[0]}<br />
+              <span className="text-muted-foreground">{t.hero.title[1]}</span>
+              {t.hero.title[2]}
+              <span className="text-primary">{t.hero.title[3]}</span>
+              {t.hero.title[4]}
             </h1>
             <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed">
-              経営・管理部門・コンテンツ運用の実務経験をもとに、業務改善、体制構築、動画/Web運用を一気通貫で担当。
-              現在はQA/テスト領域への展開を見据え、AI活用を含む実務改善に取り組んでいます。
+              {t.hero.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" className="rounded-full px-10 h-14 text-lg" asChild>
-                <a href="#achievements">実績を見る</a>
+                <a href="#achievements">{t.hero.viewWork}</a>
               </Button>
               <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-lg" asChild>
-                <a href="#contact">お問い合わせ</a>
+                <a href="#contact">{t.hero.contact}</a>
               </Button>
             </div>
           </motion.div>
@@ -190,7 +232,7 @@ export default function Portfolio() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
                 src="/profile.jpg" 
-                alt="鬼童 貴章" 
+                alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -202,33 +244,28 @@ export default function Portfolio() {
             >
               <div className="flex items-center gap-2 mb-4 text-primary">
                 <User className="w-5 h-5" />
-                <span className="text-sm font-bold uppercase tracking-widest">プロフィール</span>
+                <span className="text-sm font-bold uppercase tracking-widest">{t.about.title}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter uppercase">
-                Takayuki Kido
+                {t.about.name}
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed text-lg mb-8">
-                <p>
-                  大学卒業後、小売・法人支援・管理部門を経て、共同創業した法人で事業運営全般（製造、営業管理、顧客管理、物流、財務）を担当。
-                </p>
-                <p>
-                  採用・育成・業務設計・改善まで一気通貫で実行し、再現可能な運用体制づくりを強みとしています。
-                  現在はタイ在住で、リモート前提の業務支援に加え、Web制作・動画運用・AI活用開発を継続しています。
-                </p>
+                <p>{t.about.p1}</p>
+                <p>{t.about.p2}</p>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t pt-8">
                 <div>
                   <div className="flex items-center gap-2 text-primary mb-2">
                     <Globe className="w-4 h-4" />
-                    <h4 className="font-bold text-foreground underline decoration-primary/30 underline-offset-4">Location</h4>
+                    <h4 className="font-bold text-foreground underline decoration-primary/30 underline-offset-4">{t.about.location}</h4>
                   </div>
                   <p className="text-muted-foreground">Thailand (Remote Ready)</p>
                 </div>
                 <div>
                   <div className="flex items-center gap-2 text-primary mb-2">
                     <Mail className="w-4 h-4" />
-                    <h4 className="font-bold text-foreground underline decoration-primary/30 underline-offset-4">Email</h4>
+                    <h4 className="font-bold text-foreground underline decoration-primary/30 underline-offset-4">{t.about.email}</h4>
                   </div>
                   <p className="text-muted-foreground">tkykkd@gmail.com</p>
                 </div>
@@ -244,9 +281,9 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-2 mb-4 text-primary">
               <Wrench className="w-5 h-5" />
-              <span className="text-sm font-bold uppercase tracking-widest">Core Strengths</span>
+              <span className="text-sm font-bold uppercase tracking-widest">{t.strengths.title}</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold">専門性と強み</h2>
+            <h2 className="text-3xl md:text-5xl font-bold">{t.strengths.subtitle}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {coreStrengths.map((strength, idx) => (
@@ -289,9 +326,9 @@ export default function Portfolio() {
             <div>
               <div className="flex items-center gap-2 mb-4 text-primary">
                 <Briefcase className="w-5 h-5" />
-                <span className="text-sm font-bold uppercase tracking-widest">Achievements</span>
+                <span className="text-sm font-bold uppercase tracking-widest">{t.achievements.title}</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold">実務実績とプロジェクト</h2>
+              <h2 className="text-3xl md:text-5xl font-bold">{t.achievements.subtitle}</h2>
             </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
@@ -304,7 +341,7 @@ export default function Portfolio() {
                 transition={{ delay: idx * 0.1 }}
               >
                 <Card className="overflow-hidden border-muted/50 bg-background h-full flex flex-col group relative">
-                  {"label" in achievement && achievement.label && (
+                  {achievement.label && (
                     <div className="absolute top-4 right-4 z-10">
                       <Badge className="bg-primary text-primary-foreground font-bold rounded-sm px-3 py-1 shadow-lg ring-1 ring-white/20">
                         {achievement.label as string}
@@ -342,7 +379,7 @@ export default function Portfolio() {
                              rel="noopener noreferrer"
                              className="flex items-center gap-2 text-xs font-medium text-muted-foreground hover:text-primary transition-colors py-1.5 px-3 rounded-md bg-muted/30 group/link"
                            >
-                             {achievement.title.includes("YouTube") ? <Play className="w-3 h-3 text-red-500" /> : <ExternalLink className="w-3 h-3" />}
+                             {achievement.title.includes("YouTube") || achievement.title.includes("YouTube") || achievement.title.includes("ยูทูบ") ? <Play className="w-3 h-3 text-red-500" /> : <ExternalLink className="w-3 h-3" />}
                              <span className="flex-grow">{link.name}</span>
                              <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                            </a>
@@ -381,12 +418,10 @@ export default function Portfolio() {
             <div className="md:col-span-1">
               <div className="flex items-center gap-2 mb-4 text-primary">
                 <Award className="w-5 h-5" />
-                <span className="text-sm font-bold uppercase tracking-widest">Certifications</span>
+                <span className="text-sm font-bold uppercase tracking-widest">{t.certs.title}</span>
               </div>
-              <h2 className="text-3xl font-bold">保有資格・習得</h2>
-              <p className="mt-4 text-muted-foreground">
-                最新のAI技術からファイナンスまで、実務に裏打ちされた知識基盤を継続的にアップデートしています。
-              </p>
+              <h2 className="text-3xl font-bold">{t.certs.subtitle}</h2>
+              <p className="mt-4 text-muted-foreground">{t.certs.desc}</p>
             </div>
             <div className="md:col-span-2">
               <div className="grid sm:grid-cols-1 gap-6">
@@ -426,16 +461,15 @@ export default function Portfolio() {
           >
             <div className="flex items-center justify-center gap-2 mb-6 text-primary">
               <MessageSquare className="w-5 h-5" />
-              <span className="text-sm font-bold uppercase tracking-widest">Contact</span>
+              <span className="text-sm font-bold uppercase tracking-widest">{t.contact.title}</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 italic tracking-tight">ご相談・お問い合わせ</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 italic tracking-tight">{t.contact.subtitle}</h2>
             <p className="text-muted-foreground mb-12 text-lg md:text-xl leading-relaxed">
-              業務改善、運用設計、コンテンツ運用、Web制作、動画制作、AI活用のご相談に対応しています。<br className="hidden md:block" />
-              小規模案件から継続支援まで、お気軽にご連絡ください。
+              {t.contact.desc}
             </p>
             <div className="flex justify-center">
               <Button size="lg" className="rounded-full px-12 h-16 text-xl" asChild>
-                <a href="mailto:tkykkd@gmail.com">メールを送る</a>
+                <a href="mailto:tkykkd@gmail.com">{t.contact.btn}</a>
               </Button>
             </div>
           </motion.div>
@@ -449,7 +483,7 @@ export default function Portfolio() {
             TAKAYUKI KIDO<span className="text-primary">.</span>
           </div>
           <p className="text-muted-foreground text-center">
-            © {new Date().getFullYear()} Takayuki Kido. All rights reserved.
+            © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
         </div>
       </footer>
