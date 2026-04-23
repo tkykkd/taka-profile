@@ -25,16 +25,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
-import { profileBase64 } from "../assets/profile_img";
-import { cert1Base64 } from "../assets/cert1_img";
-import { cert2Base64 } from "../assets/cert2_img";
-import { cert3Base64 } from "../assets/cert3_img";
-import { cert4Base64 } from "../assets/cert4_img";
-import { cert5Base64 } from "../assets/cert5_img";
-import { cert6Base64 } from "../assets/cert6_img";
+import { profileBase64 } from "../assets/images";
 
 /**
- * Portfolio Version: 3.1 (Split-load Restoration)
+ * Portfolio Version: 3.2 (Stable Hybrid Model)
  * Last Updated: 2026-04-23
  */
 
@@ -123,13 +117,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: cert1Base64
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=400"
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2Base64 },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3Base64 },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: cert4Base64 },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: cert5Base64 },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: cert6Base64 }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "https://images.unsplash.com/photo-1675435425232-4299b82143ad?auto=format&fit=crop&q=80&w=400" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400" },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400" },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400" },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=400" }
   ];
 
   const navItems = [
@@ -157,7 +151,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-emerald-600 text-white px-2 rounded-full font-mono">Ver 3.1</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-sky-600 text-white px-2 rounded-full font-mono">Ver 3.2</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -518,7 +512,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-emerald-600 font-bold">[SYSTEM] Multi-Module Restoration - Ver 3.1</span>
+            <span className="text-sky-600 font-bold">[SYSTEM] Stable Hybrid Build - Ver 3.2</span>
           </div>
         </div>
       </footer>
