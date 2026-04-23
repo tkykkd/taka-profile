@@ -27,9 +27,18 @@ import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
 
 /**
- * Portfolio Version: 2.1 (Image Fix)
+ * Portfolio Version: 2.2 (Forced Image Refresh)
  * Last Updated: 2026-04-23
  */
+
+// Import local images directly for reliable build processing
+import profileImg from "../assets/fixed-profile.jpg";
+import certFpImg from "../assets/fixed-cert-fp.jpg";
+import certGoogleAiImg from "../assets/fixed-cert-google-ai.jpg";
+import certGooglePromptImg from "../assets/fixed-cert-google-prompt.jpg";
+import certVanderbiltImg from "../assets/fixed-cert-vanderbilt.jpg";
+import certUpennImg from "../assets/fixed-cert-upenn.jpg";
+import certIbmImg from "../assets/fixed-cert-ibm.jpg";
 
 export default function Portfolio() {
   const [lang, setLang] = useState<Language>("ja");
@@ -116,13 +125,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: "/cert-fp_new.jpg"
+      image: certFpImg
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert-google-ai_new.jpg" },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert-google-prompt_new.jpg" },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert-vanderbilt_new.jpg" },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert-upenn_new.jpg" },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert-ibm_new.jpg" }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: certGoogleAiImg },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: certGooglePromptImg },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: certVanderbiltImg },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: certUpennImg },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: certIbmImg }
   ];
 
   const navItems = [
@@ -240,10 +249,9 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src="/profile_new.jpg" 
+                src={profileImg} 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
             </motion.div>
             <motion.div
