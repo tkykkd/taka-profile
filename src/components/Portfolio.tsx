@@ -25,10 +25,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
-import { profileBase64, cert2Base64 } from "../assets/images";
+import { profileBase64, cert1Base64, cert2Base64, cert3Base64 } from "../assets/images";
 
 /**
- * Portfolio Version: 3.3 (Cleaning & Real Certification Restore)
+ * Portfolio Version: 3.4 (Strategic Real Asset Restore)
  * Last Updated: 2026-04-23
  */
 
@@ -117,10 +117,10 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: "https://images.unsplash.com/photo-1454165833267-03527236dc9d?auto=format&fit=crop&q=80&w=400"
+      image: cert1Base64
     },
     { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2Base64 },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3Base64 },
     { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?auto=format&fit=crop&q=80&w=400" },
     { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400" },
     { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" }
@@ -151,7 +151,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-red-700 text-white px-2 rounded-full font-mono">Ver 3.3</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-blue-800 text-white px-2 rounded-full font-mono">Ver 3.4</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -512,7 +512,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-red-700 font-bold">[SYSTEM] Optimized Real Image Restore - Ver 3.3</span>
+            <span className="text-blue-800 font-bold">[SYSTEM] Strategic Real Image Restore (Part 2) - Ver 3.4</span>
           </div>
         </div>
       </footer>
