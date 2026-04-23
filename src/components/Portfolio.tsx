@@ -27,18 +27,9 @@ import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
 
 /**
- * Portfolio Version: 2.4 (Hard Refresh / Asset Import)
+ * Portfolio Version: 2.5 (Integrity Check)
  * Last Updated: 2026-04-23
  */
-
-// Import using standard Vite asset pattern for Vercel compatibility
-import profileImg from "../assets/p-final.jpg";
-import certFpImg from "../assets/cf-1.jpg";
-import certGoogleAiImg from "../assets/cf-2.jpg";
-import certGooglePromptImg from "../assets/cf-3.jpg";
-import certVanderbiltImg from "../assets/cf-4.jpg";
-import certUpennImg from "../assets/cf-5.jpg";
-import certIbmImg from "../assets/cf-6.jpg";
 
 export default function Portfolio() {
   const [lang, setLang] = useState<Language>("ja");
@@ -125,13 +116,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: certFpImg
+      image: "/c1-v5.jpg?v=5"
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: certGoogleAiImg },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: certGooglePromptImg },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: certVanderbiltImg },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: certUpennImg },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: certIbmImg }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/c2-v5.jpg?v=5" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/c3-v5.jpg?v=5" },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/c4-v5.jpg?v=5" },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/c5-v5.jpg?v=5" },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/c6-v5.jpg?v=5" }
   ];
 
   const navItems = [
@@ -159,7 +150,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-red-500 text-white px-2 rounded-full font-mono">Ver 2.4</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-blue-600 text-white px-2 rounded-full font-mono">Ver 2.5</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -249,7 +240,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src={profileImg} 
+                src="/me-v5.jpg?v=5" 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
               />
@@ -519,6 +510,10 @@ export default function Portfolio() {
           <p className="text-muted-foreground text-center">
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
+          <div className="flex gap-4 text-[10px] opacity-50">
+            <a href="/me-v5.jpg" target="_blank" className="text-red-500 hover:underline">[DEBUG] Profile Image</a>
+            <a href="/c1-v5.jpg" target="_blank" className="text-red-500 hover:underline">[DEBUG] Cert Image</a>
+          </div>
         </div>
       </footer>
     </div>
