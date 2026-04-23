@@ -25,18 +25,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
-import { 
-  profileBase64,
-  cert1Base64,
-  cert2Base64,
-  cert3Base64,
-  cert4Base64,
-  cert5Base64,
-  cert6Base64
-} from "../assets/images";
+import { profileBase64 } from "../assets/profile_img";
+import { cert1Base64 } from "../assets/cert1_img";
+import { cert2Base64 } from "../assets/cert2_img";
+import { cert3Base64 } from "../assets/cert3_img";
+import { cert4Base64 } from "../assets/cert4_img";
+import { cert5Base64 } from "../assets/cert5_img";
+import { cert6Base64 } from "../assets/cert6_img";
 
 /**
- * Portfolio Version: 3.0 (Final Image Restoration)
+ * Portfolio Version: 3.1 (Split-load Restoration)
  * Last Updated: 2026-04-23
  */
 
@@ -159,7 +157,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-yellow-600 text-white px-2 rounded-full font-mono">Ver 3.0</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-emerald-600 text-white px-2 rounded-full font-mono">Ver 3.1</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -520,7 +518,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-yellow-600 font-bold">[SYSTEM] Full Image Restoration - Ver 3.0</span>
+            <span className="text-emerald-600 font-bold">[SYSTEM] Multi-Module Restoration - Ver 3.1</span>
           </div>
         </div>
       </footer>
