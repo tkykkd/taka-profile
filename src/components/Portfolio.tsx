@@ -26,6 +26,15 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
 
+// Import local images for reliable build processing
+import profileImg from "../assets/profile.jpg";
+import certFpImg from "../assets/cert-fp.jpg";
+import certGoogleAiImg from "../assets/cert-google-ai.jpg";
+import certGooglePromptImg from "../assets/cert-google-prompt.jpg";
+import certVanderbiltImg from "../assets/cert-vanderbilt.jpg";
+import certUpennImg from "../assets/cert-upenn.jpg";
+import certIbmImg from "../assets/cert-ibm.jpg";
+
 export default function Portfolio() {
   const [lang, setLang] = useState<Language>("ja");
   const t = translations[lang];
@@ -111,13 +120,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: "/cert-fp.jpg"
+      image: certFpImg
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert-google-ai.jpg" },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert-google-prompt.jpg" },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert-vanderbilt.jpg" },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert-upenn.jpg" },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert-ibm.jpg" }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: certGoogleAiImg },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: certGooglePromptImg },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: certVanderbiltImg },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: certUpennImg },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: certIbmImg }
   ];
 
   const navItems = [
@@ -235,7 +244,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src="/profile.jpg" 
+                src={profileImg} 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
                 referrerPolicy="no-referrer"
