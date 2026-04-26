@@ -25,17 +25,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
-import { profileBase64 } from "../assets/images";
-import { cert1Base64 } from "../assets/cert1_data";
-import { cert2Base64 } from "../assets/cert2_data";
-import { cert3Base64 } from "../assets/cert3_data";
-import { cert4Base64 } from "../assets/cert4_data";
-import { cert5Base64 } from "../assets/cert5_data";
-import { cert6Base64 } from "../assets/cert6_data";
 
 /**
- * Portfolio Version: 3.8 (Ultra-Stable Base64 Split)
- * Last Updated: 2026-04-23
+ * Portfolio Version: 4.1 (Complete Static Asset Transition)
+ * Last Updated: 2026-04-26
  */
 
 export default function Portfolio() {
@@ -123,13 +116,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: cert1Base64
+      image: "/cert1.jpg"
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2Base64 },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3Base64 },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: cert4Base64 },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: cert5Base64 },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: cert6Base64 }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert2.jpg" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert3.jpg" },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert4.jpg" },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert5.jpg" },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert6.jpg" }
   ];
 
   const navItems = [
@@ -157,7 +150,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-violet-900 text-white px-2 rounded-full font-mono">Ver 3.8</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-orange-800 text-white px-2 rounded-full font-mono">Ver 4.1</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -247,7 +240,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src={profileBase64} 
+                src="/photo-v6.png" 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
               />
@@ -464,7 +457,6 @@ export default function Portfolio() {
                           src={cert.image} 
                           alt={cert.name} 
                           className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-zoom-in"
-                          referrerPolicy="no-referrer"
                         />
                       </div>
                     )}
@@ -518,7 +510,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-violet-900 font-bold">[SYSTEM] Distributed Image Module Delivery - Ver 3.8</span>
+            <span className="text-orange-800 font-bold">[SYSTEM] Zero-Base64 Pure Static Architecture - Ver 4.1</span>
           </div>
         </div>
       </footer>
