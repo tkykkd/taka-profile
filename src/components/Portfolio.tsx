@@ -26,8 +26,17 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
 
+// Import static assets
+import profilePhoto from "../assets/photo-v6.png";
+import cert1 from "../assets/cert1-v6.png";
+import cert2 from "../assets/cert2-v6.png";
+import cert3 from "../assets/cert3-v6.png";
+import cert4 from "../assets/cert4-v6.png";
+import cert5 from "../assets/cert5-v6.png";
+import cert6 from "../assets/cert6-v6.png";
+
 /**
- * Portfolio Version: 4.1 (Complete Static Asset Transition)
+ * Portfolio Version: 4.4 (Latest Asset Integration)
  * Last Updated: 2026-04-26
  */
 
@@ -116,13 +125,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: "/cert1.jpg"
+      image: cert1
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert2.jpg" },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert3.jpg" },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert4.jpg" },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert5.jpg" },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert6.jpg" }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2 },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3 },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: cert4 },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: cert5 },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: cert6 }
   ];
 
   const navItems = [
@@ -150,7 +159,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-orange-800 text-white px-2 rounded-full font-mono">Ver 4.1</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-orange-800 text-white px-2 rounded-full font-mono">Ver 4.4</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -240,7 +249,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src="/photo-v6.png" 
+                src={profilePhoto} 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
               />
@@ -510,7 +519,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-orange-800 font-bold">[SYSTEM] Zero-Base64 Pure Static Architecture - Ver 4.1</span>
+            <span className="text-orange-800 font-bold">[SYSTEM] Latest Asset Bundling - Ver 4.4</span>
           </div>
         </div>
       </footer>
