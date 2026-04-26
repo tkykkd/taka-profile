@@ -26,15 +26,15 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { translations, type Language } from "../locales";
 import { profileBase64 } from "../assets/images";
-import cert1 from "../assets/cf-1.jpg";
-import cert2 from "../assets/cf-2.jpg";
-import cert3 from "../assets/cf-3.jpg";
-import cert4 from "../assets/cf-4.jpg";
-import cert5 from "../assets/cf-5.jpg";
-import cert6 from "../assets/cf-6.jpg";
+import { cert1Base64 } from "../assets/cert1_data";
+import { cert2Base64 } from "../assets/cert2_data";
+import { cert3Base64 } from "../assets/cert3_data";
+import { cert4Base64 } from "../assets/cert4_data";
+import { cert5Base64 } from "../assets/cert5_data";
+import { cert6Base64 } from "../assets/cert6_data";
 
 /**
- * Portfolio Version: 3.7 (Native Asset Import)
+ * Portfolio Version: 3.8 (Ultra-Stable Base64 Split)
  * Last Updated: 2026-04-23
  */
 
@@ -123,13 +123,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: cert1
+      image: cert1Base64
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2 },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3 },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: cert4 },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: cert5 },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: cert6 }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2Base64 },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3Base64 },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: cert4Base64 },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: cert5Base64 },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: cert6Base64 }
   ];
 
   const navItems = [
@@ -157,7 +157,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-indigo-900 text-white px-2 rounded-full font-mono">Ver 3.7</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-violet-900 text-white px-2 rounded-full font-mono">Ver 3.8</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -518,7 +518,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-indigo-900 font-bold">[SYSTEM] Native Asset Module Resolution - Ver 3.7</span>
+            <span className="text-violet-900 font-bold">[SYSTEM] Distributed Image Module Delivery - Ver 3.8</span>
           </div>
         </div>
       </footer>
