@@ -27,7 +27,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { translations, type Language } from "../locales";
 
-// Portfolio Version 6.8: Ultra-Stability Asset Strategy
+// Portfolio Version 7.0: Restored Stability with JPEG Assets
 export default function Portfolio() {
   const [lang, setLang] = useState<Language>("ja");
   const t = translations[lang];
@@ -113,13 +113,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: "/cert1-v6.png"
+      image: "/cert-fp.jpg"
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert2-v6.png" },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert3-v6.png" },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert4-v6.png" },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert5-v6.png" },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert6-v6.png" }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert-google-ai.jpg" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert-google-prompt.jpg" },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert-vanderbilt.jpg" },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert-upenn.jpg" },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert-ibm.jpg" }
   ];
 
   const navItems = [
@@ -147,7 +147,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-sky-800 text-white px-2 rounded-full font-mono">Ver 6.8</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-sky-800 text-white px-2 rounded-full font-mono">Ver 7.0</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -246,7 +246,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src="/photo-v6.png" 
+                src="/profile.jpg" 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
               />
@@ -518,7 +518,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-sky-800 font-bold">[SYSTEM] Direct Asset Strategy - Ver 6.8</span>
+            <span className="text-sky-800 font-bold">[SYSTEM] Stability Restored - Ver 7.0</span>
           </div>
         </div>
       </footer>
