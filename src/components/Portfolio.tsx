@@ -20,26 +20,14 @@ import {
   Check,
   Copy
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 import { translations, type Language } from "../locales";
 
-// Import static assets
-import profilePhoto from "../assets/photo-v6.png";
-import cert1 from "../assets/cert1-v6.png";
-import cert2 from "../assets/cert2-v6.png";
-import cert3 from "../assets/cert3-v6.png";
-import cert4 from "../assets/cert4-v6.png";
-import cert5 from "../assets/cert5-v6.png";
-import cert6 from "../assets/cert6-v6.png";
-
-/**
- * Portfolio Version: 4.4 (Latest Asset Integration)
- * Last Updated: 2026-04-26
- */
-
+// Portfolio Version 6.8: Ultra-Stability Asset Strategy
 export default function Portfolio() {
   const [lang, setLang] = useState<Language>("ja");
   const t = translations[lang];
@@ -125,13 +113,13 @@ export default function Portfolio() {
   const certifications = [
     { 
       name: "2級ファイナンシャル・プランニング技能士", 
-      image: cert1
+      image: "/cert1-v6.png"
     },
-    { name: "Google AI Essentials (Coursera, 2026年1月)", image: cert2 },
-    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: cert3 },
-    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: cert4 },
-    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: cert5 },
-    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: cert6 }
+    { name: "Google AI Essentials (Coursera, 2026年1月)", image: "/cert2-v6.png" },
+    { name: "Google Prompting Essentials (Coursera, 2026年2月)", image: "/cert3-v6.png" },
+    { name: "Generative AI for Leaders (Vanderbilt/Coursera, 2026年2月)", image: "/cert4-v6.png" },
+    { name: "AI For Business (University of Pennsylvania/Coursera, 2026年2月)", image: "/cert5-v6.png" },
+    { name: "Generative AI for Executives and Business Leaders (IBM/Coursera, 2026年2月)", image: "/cert6-v6.png" }
   ];
 
   const navItems = [
@@ -159,7 +147,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               className="font-display text-xl font-bold tracking-tighter"
             >
-              TAKAYUKI KIDO <span className="text-[10px] bg-orange-800 text-white px-2 rounded-full font-mono">Ver 4.4</span><span className="text-primary">.</span>
+              TAKAYUKI KIDO <span className="text-[10px] bg-sky-800 text-white px-2 rounded-full font-mono">Ver 6.8</span><span className="text-primary">.</span>
             </motion.div>
             
             <div className="hidden lg:flex space-x-6 text-sm font-medium">
@@ -195,9 +183,12 @@ export default function Portfolio() {
                 ))}
               </div>
               
-              <Button variant="outline" size="sm" className="hidden md:flex rounded-full text-xs" asChild>
-                <a href="#contact">{t.nav.contact}</a>
-              </Button>
+              <a 
+                href="#contact" 
+                className={cn(buttonVariants({ variant: "outline", size: "sm" }), "hidden md:flex rounded-full text-xs")}
+              >
+                {t.nav.contact}
+              </a>
             </div>
           </div>
         </div>
@@ -226,12 +217,18 @@ export default function Portfolio() {
               {t.hero.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="rounded-full px-10 h-14 text-lg" asChild>
-                <a href="#achievements">{t.hero.viewWork}</a>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-lg" asChild>
-                <a href="#contact">{t.hero.contact}</a>
-              </Button>
+              <a 
+                href="#achievements" 
+                className={cn(buttonVariants({ size: "lg" }), "rounded-full px-10 h-14 text-lg")}
+              >
+                {t.hero.viewWork}
+              </a>
+              <a 
+                href="#contact" 
+                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "rounded-full px-10 h-14 text-lg")}
+              >
+                {t.hero.contact}
+              </a>
             </div>
           </motion.div>
         </div>
@@ -249,7 +246,7 @@ export default function Portfolio() {
             >
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl opacity-50"></div>
               <img 
-                src={profilePhoto} 
+                src="/photo-v6.png" 
                 alt="Takayuki Kido" 
                 className="relative rounded-2xl w-full h-full object-cover"
               />
@@ -423,12 +420,15 @@ export default function Portfolio() {
                     </div>
 
                     {"link" in achievement && achievement.link && (
-                      <Button variant="outline" size="sm" className="w-full mt-6 rounded-full text-xs font-bold" asChild>
-                        <a href={(achievement.link as any).href} target="_blank" rel="noopener noreferrer">
-                          {(achievement.link as any).label}
-                          <ExternalLink className="ml-2 w-3 h-3" />
-                        </a>
-                      </Button>
+                      <a 
+                        href={(achievement.link as any).href} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={cn(buttonVariants({ variant: "outline", size: "sm" }), "w-full mt-6 rounded-full text-xs font-bold")}
+                      >
+                        {(achievement.link as any).label}
+                        <ExternalLink className="ml-2 w-3 h-3" />
+                      </a>
                     )}
                   </CardContent>
                 </Card>
@@ -494,16 +494,15 @@ export default function Portfolio() {
               {t.contact.desc}
             </p>
             <div className="flex justify-center">
-              <Button 
-                size="lg" 
-                className="rounded-full px-12 h-16 text-xl transition-all duration-300"
-                asChild
+              <a 
+                href={GOOGLE_FORM_URL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={cn(buttonVariants({ size: "lg" }), "rounded-full px-12 h-16 text-xl transition-all duration-300")}
               >
-                <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
-                  {t.contact.btn}
-                  <ExternalLink className="ml-2 w-5 h-5" />
-                </a>
-              </Button>
+                {t.contact.btn}
+                <ExternalLink className="ml-2 w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         </div>
@@ -519,7 +518,7 @@ export default function Portfolio() {
             © {new Date().getFullYear()} Takayuki Kido. {t.footer.rights}
           </p>
           <div className="flex gap-4 text-[10px] opacity-70">
-            <span className="text-orange-800 font-bold">[SYSTEM] Latest Asset Bundling - Ver 4.4</span>
+            <span className="text-sky-800 font-bold">[SYSTEM] Direct Asset Strategy - Ver 6.8</span>
           </div>
         </div>
       </footer>
